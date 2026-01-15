@@ -18,13 +18,13 @@ body.is-home {
     justify-content: center;
 }
 
-/* --- 2. The Wrapper (THE FIX) --- */
+/* --- 2. The Wrapper (Centering via Stretch) --- */
 .desktop-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 20px;
-    /* CHANGE: We use 'stretch' so the grid can actually use the width we give it */
+    /* FIX: 'stretch' lets the Lab container use the full width we give it */
     align-items: stretch; 
 }
 
@@ -32,9 +32,9 @@ body:not(.is-home) .desktop-wrapper {
     padding-top: 50px;
 }
 
-/* Since the wrapper no longer centers everything, we center these manually */
+/* Centering the Title and Nav manually since the wrapper is now 'stretch' */
 .main-title, .link-row {
-    align-self: center; 
+    align-self: center;
     text-align: center;
 }
 
@@ -63,18 +63,19 @@ body:not(.is-home) .desktop-wrapper {
 
 .retro-link.is-active { color: #551A8B; text-decoration: none; }
 
-/* --- 4. THE LAB: Forced Side-by-Side --- */
+/* --- 4. THE LAB: Side-by-Side Grid --- */
 
 .page-content {
-    /* This gives you the 'center' look with sizeable margins on both sides */
-    width: 90%; 
+    /* Loose center: Occupies 80% of width with sizeable margins */
+    width: 80%; 
     max-width: 1100px; 
     margin: 0 auto;
 }
 
-.lab-content-wrapper {
+/* FIX: Renamed from .lab-content-wrapper to match your template class .lab-grid */
+.lab-grid {
     display: grid !important;
-    /* minmax(0, 1fr) forces the columns to stay equal even with long text */
+    /* FORCED: Splitting the space into two equal halves */
     grid-template-columns: repeat(2, minmax(0, 1fr)); 
     column-gap: 80px;
     row-gap: 60px;
@@ -86,12 +87,13 @@ body:not(.is-home) .desktop-wrapper {
 .project-entry {
     display: block;
     text-align: left;
-    width: 100%;
+    /* Secret Grid fix: allows content to be narrower than its container to force wrapping */
+    min-width: 0; 
 }
 
 .project-title {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: bold;
     display: block;
     margin-bottom: 15px;
@@ -99,7 +101,7 @@ body:not(.is-home) .desktop-wrapper {
     text-decoration: underline;
     line-height: 1.2;
 
-    /* THE 'MODEL' FIX: Forces the word to wrap inside its 50% share */
+    /* THE 'MODEL' WRAP FIX: Forces the word to hit the 50% boundary and drop down */
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word; 
@@ -119,5 +121,6 @@ body:not(.is-home) .desktop-wrapper {
 
 /* Mobile fallback */
 @media (max-width: 850px) {
-    .lab-content-wrapper { grid-template-columns: 1fr; }
+    .lab-grid { grid-template-columns: 1fr; }
+    .page-content { width: 95%; }
 }

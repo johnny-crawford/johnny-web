@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+<div class="lab-grid">
+    {%- for project in collections.lab -%}
+    <div class="project-card">
+        <a href="{{ project.data.github_url }}" class="retro-link project-title">
+            {{ project.data.title }}
+        </a>
+        <ul class="lesson-list">
+            {%- for lesson in project.data.lessons -%}
+            <li>{{ lesson }}</li>
+            {%- endfor -%}
+        </ul>
+    </div>
+    {%- endfor -%}
+</div>

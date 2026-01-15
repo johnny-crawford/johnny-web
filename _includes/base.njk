@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="{% if page.url == '/' %}is-home{% endif %}">
+
+    <main class="desktop-wrapper">
+        <h1 class="main-title">
+            <a href="/" style="text-decoration: none; color: inherit;">C:\Users\Johnny</a>
+        </h1>
+
+        <nav class="link-row">
+            <a href="/lab" class="retro-link {% if page.url == '/lab/' %}is-active{% endif %}">the lab</a>
+            <a href="/bookshelf" class="retro-link {% if page.url == '/bookshelf/' %}is-active{% endif %}">bookshelf</a>
+            <a href="/notebook" class="retro-link {% if page.url == '/notebook/' %}is-active{% endif %}">notebook</a>
+            <a href="/about" class="retro-link {% if page.url == '/about/' %}is-active{% endif %}">about me</a>
+        </nav>
+
+        <div class="page-content">
+            {{ content | safe }}
+        </div>
+    </main>
+
+</body>
+</html>

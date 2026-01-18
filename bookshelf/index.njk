@@ -1,49 +1,56 @@
-#---
+---
 layout: base.njk
 title: Bookshelf
 ---
-<div class="page-content" style="text-align: center;">
+<div class="page-content">
 
-  {# 1. Currently Reading #}
-  <div class="active-reading-box">
-    <h2 class="bookshelf-section-header" style="border: none; margin-bottom: 10px;">[ CURRENTLY_READING ]</h2>
+  {# 1. Currently Reading Section #}
+  <div class="bookshelf-container">
+    <h2 class="bookshelf-header">[ currently reading ]</h2>
+    <br>
     {% for book in collections.bookshelf %}
       {% if book.data.status == "currently-reading" %}
-        <div>
-          <span class="project-title" style="text-decoration: none; cursor: default;">{{ book.data.title }}</span>
-          <span class="item-metadata" style="margin-top: 5px;">By {{ book.data.author }}</span>
+        <div class="currently-reading-box">
+          {# Title uses verified project-title class but without the blue link style #}
+          <span class="project-title" style="color: #000; text-decoration: none; border: none; cursor: default;">
+            {{ book.data.title }}
+          </span>
+          <span class="book-author">By {{ book.data.author }}</span>
         </div>
       {% endif %}
     {% endfor %}
   </div>
 
-  {# 2. The Two-Column Grid (Reusing your perfect Lab Grid) #}
+  {# 2. The Side-by-Side Grid #}
   <div class="lab-grid">
     
-    {# LEFT COLUMN: Reviews #}
+    {# LEFT COLUMN: reviews #}
     <div class="project-entry">
-      <h2 class="bookshelf-section-header">REVIEWS</h2>
+      <h2 class="bookshelf-header" style="border-bottom: 1px solid #000; padding-bottom: 5px; width: 100%;">
+        reviews
+      </h2>
       {% for book in collections.bookshelf %}
         {% if book.data.status == "read" %}
-          <div style="margin-bottom: 30px;">
+          <div style="margin-bottom: 25px;">
             <a href="{{ book.url }}" class="project-title">{{ book.data.title }}</a>
-            <span class="item-metadata">By {{ book.data.author }}</span>
+            <span class="book-author">By {{ book.data.author }}</span>
           </div>
         {% endif %}
       {% endfor %}
     </div>
 
-    {# RIGHT COLUMN: Reading List #}
+    {# RIGHT COLUMN: reading list #}
     <div class="project-entry">
-      <h2 class="bookshelf-section-header">READING_LIST</h2>
+      <h2 class="bookshelf-header" style="border-bottom: 1px solid #000; padding-bottom: 5px; width: 100%;">
+        reading list
+      </h2>
       {% for book in collections.bookshelf %}
         {% if book.data.status == "want-to-read" %}
-          <div style="margin-bottom: 30px;">
-            {# Coherence: Same class as Lab titles, but black since it's not a link #}
+          <div style="margin-bottom: 25px;">
             <span class="project-title" style="color: #000; text-decoration: none; cursor: default;">
               {{ book.data.title }}
             </span>
-            <span class="item-metadata">By {{ book.data.author }}</span>
+            <span class="book-author">By {{ book.data.author }}</span>
           </div>
         {% endif %}
       {% endfor %}

@@ -12,19 +12,18 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
-/* Homepage Only Centering */
 body.is-home {
     align-items: center;
     justify-content: center;
 }
 
-/* --- 2. The Wrapper (Centering via Stretch) --- */
+/* --- 2. The Wrapper (The Fix for Side-by-Side) --- */
 .desktop-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
     padding: 20px;
-    /* FIX: 'stretch' lets the Lab container use the full width we give it */
+    /* 'stretch' allows child grids to use the full width available */
     align-items: stretch; 
 }
 
@@ -32,7 +31,7 @@ body:not(.is-home) .desktop-wrapper {
     padding-top: 50px;
 }
 
-/* Centering the Title and Nav manually since the wrapper is now 'stretch' */
+/* Manually center header and nav since the wrapper is now 'stretch' */
 .main-title, .link-row {
     align-self: center;
     text-align: center;
@@ -63,19 +62,16 @@ body:not(.is-home) .desktop-wrapper {
 
 .retro-link.is-active { color: #551A8B; text-decoration: none; }
 
-/* --- 4. THE LAB: Side-by-Side Grid --- */
-
+/* --- 4. THE GRID: Shared by Lab and Bookshelf --- */
 .page-content {
-    /* Loose center: Occupies 80% of width with sizeable margins */
-    width: 80%; 
+    width: 90%; 
     max-width: 1100px; 
     margin: 0 auto;
 }
 
-/* FIX: Renamed from .lab-content-wrapper to match your template class .lab-grid */
 .lab-grid {
     display: grid !important;
-    /* FORCED: Splitting the space into two equal halves */
+    /* minmax(0, 1fr) ensures columns don't expand past 50% width */
     grid-template-columns: repeat(2, minmax(0, 1fr)); 
     column-gap: 80px;
     row-gap: 60px;
@@ -83,87 +79,63 @@ body:not(.is-home) .desktop-wrapper {
     align-items: start;
 }
 
-/* Each Project entry is an 'Invisible Box' */
 .project-entry {
     display: block;
     text-align: left;
-    /* Secret Grid fix: allows content to be narrower than its container to force wrapping */
     min-width: 0; 
 }
 
 .project-title {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: bold;
     display: block;
     margin-bottom: 15px;
     color: #0000FF;
     text-decoration: underline;
     line-height: 1.2;
-
-    /* THE 'MODEL' WRAP FIX: Forces the word to hit the 50% boundary and drop down */
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word; 
     white-space: normal;
 }
 
-.lesson-list {
+/* --- 5. BOOKSHELF SPECIFIC COHERENCE --- */
+
+.bookshelf-header {
     font-family: 'Share Tech Mono', monospace;
-    list-style-type: square;
-    padding-left: 20px;
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline-block;
+    color: #000;
 }
 
-.lesson-list li { margin-bottom: 8px; }
+/* Metadata matches the Lab's lesson list font size */
+.book-author {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem; 
+    color: #333;
+    margin-top: 4px;
+    display: block;
+}
+
+/* The Dotted Box for Currently Reading */
+.currently-reading-box {
+    border: 1px dashed #000;
+    padding: 15px 25px;
+    display: inline-block;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.bookshelf-container {
+    text-align: center;
+    margin-bottom: 60px;
+    width: 100%;
+}
 
 /* Mobile fallback */
 @media (max-width: 850px) {
     .lab-grid { grid-template-columns: 1fr; }
-    .page-content { width: 95%; }
-}
-
-/* Bookshelf Column Layout */
-.bookshelf-column {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    min-width: 0; /* Ensures the 'Model' wrapping fix still works here */
-}
-
-/* Custom terminal-style bullets for the reading list */
-.bookshelf-column .lesson-list {
-    padding-left: 15px;
-}
-
-.bookshelf-section-header {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-bottom: 25px;
-    color: #000;
-    text-transform: uppercase;
-    border-bottom: 1px solid #000;
-    padding-bottom: 5px;
-    display: inline-block;
-}
-
-/* Author metadata - matches the 'lessons' font size for coherence */
-.item-metadata {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.95rem;
-    color: #333;
-    margin: -10px 0 20px 0;
-    display: block;
-}
-
-/* Special container for the Currently Reading box */
-.active-reading-box {
-    border: 1px dashed #000;
-    padding: 20px 40px;
-    display: inline-block;
-    text-align: left;
-    margin-bottom: 60px;
 }

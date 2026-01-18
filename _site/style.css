@@ -12,7 +12,6 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
-/* Homepage Only Centering */
 body.is-home {
     align-items: center;
     justify-content: center;
@@ -24,7 +23,6 @@ body.is-home {
     flex-direction: column;
     width: 100%;
     padding: 20px;
-    /* 'stretch' is crucial: it allows child containers to use the width we define */
     align-items: stretch; 
 }
 
@@ -32,7 +30,6 @@ body:not(.is-home) .desktop-wrapper {
     padding-top: 50px;
 }
 
-/* Manually center header and nav because the wrapper is now 'stretch' */
 .main-title, .link-row {
     align-self: center;
     text-align: center;
@@ -79,26 +76,36 @@ body:not(.is-home) .desktop-wrapper {
     align-items: start;
 }
 
-/* Each Column is an 'Invisible Box' */
 .project-entry {
     display: block;
     text-align: left;
     min-width: 0; 
 }
 
+/* Base styling for all titles (Projects, Books, Essays) */
 .project-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.4rem;
     font-weight: bold;
     display: block;
     margin-bottom: 15px;
-    color: #0000FF;
-    text-decoration: underline;
     line-height: 1.2;
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word; 
     white-space: normal;
+}
+
+/* FORCED BLUE LINKS: Specifically targets links with the title class */
+a.project-title {
+    color: #0000FF !important;
+    text-decoration: underline !important;
+}
+
+/* FORCED BLACK TEXT: Targets non-link spans for Reading List consistency */
+span.project-title {
+    color: #000;
+    text-decoration: none;
 }
 
 .lesson-list {
@@ -113,7 +120,7 @@ body:not(.is-home) .desktop-wrapper {
 
 .lesson-list li { margin-bottom: 8px; }
 
-/* --- 5. BOOKSHELF & NOTEBOOK SPECIFIC --- */
+/* --- 5. BOOKSHELF & NOTEBOOK SPECIFIC COHERENCE --- */
 
 .bookshelf-header {
     font-family: 'Share Tech Mono', monospace;
@@ -124,11 +131,12 @@ body:not(.is-home) .desktop-wrapper {
     color: #000;
 }
 
-.book-author {
+.book-author, .item-date {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.95rem; 
     color: #333;
-    margin-top: 4px;
+    margin-top: -12px;
+    margin-bottom: 20px;
     display: block;
 }
 
@@ -140,7 +148,7 @@ body:not(.is-home) .desktop-wrapper {
     margin-top: 10px;
 }
 
-.bookshelf-container {
+.centered-container {
     text-align: center;
     margin-bottom: 60px;
     width: 100%;

@@ -3,16 +3,25 @@ layout: base.njk
 title: Notebook
 ---
 <div class="page-content">
+  
+  {# Header for coherence with Bookshelf #}
+  <div class="centered-container" style="text-align: left; margin-bottom: 40px;">
+    <h2 class="bookshelf-header" style="border-bottom: 1px solid #000; padding-bottom: 5px; width: 100%;">
+      notebook
+    </h2>
+  </div>
+
   <div class="lab-grid">
-    {# This loop assumes you have markdown files with 'tags: notebook' #}
+    {# Loop through essays tagged with 'notebook' #}
     {% for essay in collections.notebook %}
-      <div class="project-entry" style="margin-bottom: 20px;">
+      <div class="project-entry">
         <a href="{{ essay.url }}" class="project-title">
-          "{{ essay.data.title }}"
+          {{ essay.data.title }}
         </a>
-        <p style="font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: #555; margin-top: -10px;">
-          {{ essay.date | dateFilter }} {# Optional: Adds the date if you have a filter #}
-        </p>
+        {# Shows the date underneath in mono font for terminal look #}
+        <span class="item-date">
+          {{ essay.date | dateFilter if dateFilter else essay.date.toDateString() }}
+        </span>
       </div>
     {% endfor %}
   </div>

@@ -1,5 +1,5 @@
 ---
-title: "eigenface facial recognition"
+title: "Eigenface Facial Recognition"
 github_url: "https://github.com/johnny-crawford/EigenFace"
 tags: lab
 lessons:

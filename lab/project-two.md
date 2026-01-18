@@ -1,5 +1,5 @@
 ---
-title: "predicting SPY returns with a hybrid LR + LSTM Model"
+title: "Predicting SPY Returns with a Hybrid LR + LSTM Model"
 github_url: "https://github.com/johnny-crawford/Price-Prediction-Model"
 tags: lab
 lessons:

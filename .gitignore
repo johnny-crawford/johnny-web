@@ -1,0 +1,9 @@
+# Local Eleventy output
+_site/
+
+# Dependency folders
+node_modules/
+
+# Local configuration/logs
+.DS_Store
+npm-debug.log*

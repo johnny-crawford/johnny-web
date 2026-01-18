@@ -1,0 +1,19 @@
+---
+layout: base.njk
+title: Notebook
+---
+<div class="page-content">
+  <div class="lab-grid">
+    {# This loop assumes you have markdown files with 'tags: notebook' #}
+    {% for essay in collections.notebook %}
+      <div class="project-entry" style="margin-bottom: 20px;">
+        <a href="{{ essay.url }}" class="project-title">
+          "{{ essay.data.title }}"
+        </a>
+        <p style="font-family: 'Share Tech Mono', monospace; font-size: 0.85rem; color: #555; margin-top: -10px;">
+          {{ essay.date | dateFilter }} {# Optional: Adds the date if you have a filter #}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+</div>

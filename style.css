@@ -2,7 +2,7 @@
 * { box-sizing: border-box; }
 
 body {
-    background-color: #C0C0C0;
+    background-color: #C0C0C0; /* Retro Windows 95 Gray */
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,6 +12,7 @@ body {
     font-family: "Times New Roman", Times, serif;
 }
 
+/* Homepage Only Centering */
 body.is-home {
     align-items: center;
     justify-content: center;
@@ -23,7 +24,7 @@ body.is-home {
     flex-direction: column;
     width: 100%;
     padding: 20px;
-    /* 'stretch' allows child grids to use the full width available */
+    /* 'stretch' is crucial: it allows child containers to use the width we define */
     align-items: stretch; 
 }
 
@@ -31,7 +32,7 @@ body:not(.is-home) .desktop-wrapper {
     padding-top: 50px;
 }
 
-/* Manually center header and nav since the wrapper is now 'stretch' */
+/* Manually center header and nav because the wrapper is now 'stretch' */
 .main-title, .link-row {
     align-self: center;
     text-align: center;
@@ -62,7 +63,7 @@ body:not(.is-home) .desktop-wrapper {
 
 .retro-link.is-active { color: #551A8B; text-decoration: none; }
 
-/* --- 4. THE GRID: Shared by Lab and Bookshelf --- */
+/* --- 4. THE GLOBAL GRID: Shared by Lab, Bookshelf, and Notebook --- */
 .page-content {
     width: 90%; 
     max-width: 1100px; 
@@ -71,7 +72,6 @@ body:not(.is-home) .desktop-wrapper {
 
 .lab-grid {
     display: grid !important;
-    /* minmax(0, 1fr) ensures columns don't expand past 50% width */
     grid-template-columns: repeat(2, minmax(0, 1fr)); 
     column-gap: 80px;
     row-gap: 60px;
@@ -79,6 +79,7 @@ body:not(.is-home) .desktop-wrapper {
     align-items: start;
 }
 
+/* Each Column is an 'Invisible Box' */
 .project-entry {
     display: block;
     text-align: left;
@@ -100,7 +101,19 @@ body:not(.is-home) .desktop-wrapper {
     white-space: normal;
 }
 
-/* --- 5. BOOKSHELF SPECIFIC COHERENCE --- */
+.lesson-list {
+    font-family: 'Share Tech Mono', monospace;
+    list-style-type: square;
+    padding-left: 20px;
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #000;
+}
+
+.lesson-list li { margin-bottom: 8px; }
+
+/* --- 5. BOOKSHELF & NOTEBOOK SPECIFIC --- */
 
 .bookshelf-header {
     font-family: 'Share Tech Mono', monospace;
@@ -111,7 +124,6 @@ body:not(.is-home) .desktop-wrapper {
     color: #000;
 }
 
-/* Metadata matches the Lab's lesson list font size */
 .book-author {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.95rem; 
@@ -120,7 +132,6 @@ body:not(.is-home) .desktop-wrapper {
     display: block;
 }
 
-/* The Dotted Box for Currently Reading */
 .currently-reading-box {
     border: 1px dashed #000;
     padding: 15px 25px;
@@ -138,4 +149,5 @@ body:not(.is-home) .desktop-wrapper {
 /* Mobile fallback */
 @media (max-width: 850px) {
     .lab-grid { grid-template-columns: 1fr; }
+    .page-content { width: 95%; }
 }

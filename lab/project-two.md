@@ -8,5 +8,5 @@ lessons:
   - "they start with a baseline linear regression on engineered features like momentum and volatility"
   - "then they train an LSTM on the regression residuals to see if it can add predictive power"
   - "the hybrid didn’t beat the baseline in directional accuracy, but it was a super fun and challenging project"
-  - "working through the entire pipeline was hard at my level, but i found the data cleaning SO infuriating; definitely a learning experience"
+  - "working through the entire pipeline was hard at my level, i found the data cleaning SO infuriating; definitely a learning experience"
 ---

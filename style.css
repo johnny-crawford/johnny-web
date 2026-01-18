@@ -124,3 +124,16 @@ body:not(.is-home) .desktop-wrapper {
     .lab-grid { grid-template-columns: 1fr; }
     .page-content { width: 95%; }
 }
+
+/* Bookshelf Column Layout */
+.bookshelf-column {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-width: 0; /* Ensures the 'Model' wrapping fix still works here */
+}
+
+/* Custom terminal-style bullets for the reading list */
+.bookshelf-column .lesson-list {
+    padding-left: 15px;
+}

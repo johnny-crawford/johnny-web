@@ -6,6 +6,4 @@ status: "read"
 tags: bookshelf
 ---
 
-### my thoughts
-
 good book

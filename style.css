@@ -137,3 +137,33 @@ body:not(.is-home) .desktop-wrapper {
 .bookshelf-column .lesson-list {
     padding-left: 15px;
 }
+
+.bookshelf-section-header {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #000;
+    text-transform: uppercase;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+/* Author metadata - matches the 'lessons' font size for coherence */
+.item-metadata {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.95rem;
+    color: #333;
+    margin: -10px 0 20px 0;
+    display: block;
+}
+
+/* Special container for the Currently Reading box */
+.active-reading-box {
+    border: 1px dashed #000;
+    padding: 20px 40px;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 60px;
+}

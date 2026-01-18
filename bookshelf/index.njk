@@ -1,55 +1,52 @@
----
+#---
 layout: base.njk
 title: Bookshelf
 ---
-<div class="page-content">
+<div class="page-content" style="text-align: center;">
 
-  {# 1. Currently Reading Section #}
-  <div style="margin-bottom: 60px; text-align: center;">
-    <h2 style="font-family: 'Share Tech Mono', monospace; font-size: 1.2rem; margin-bottom: 15px;">[ currently reading ]</h2>
+  {# 1. Currently Reading #}
+  <div class="active-reading-box">
+    <h2 class="bookshelf-section-header" style="border: none; margin-bottom: 10px;">[ CURRENTLY_READING ]</h2>
     {% for book in collections.bookshelf %}
       {% if book.data.status == "currently-reading" %}
-        <div class="project-entry" style="display: inline-block; border: 1px dashed #000; padding: 15px 30px;">
-          <span style="font-family: 'Share Tech Mono', monospace; font-weight: bold; font-size: 1.2rem;">{{ book.data.title }}</span>
-          <p style="font-family: 'Share Tech Mono', monospace; margin: 5px 0 0 0;">{{ book.data.author }}</p>
+        <div>
+          <span class="project-title" style="text-decoration: none; cursor: default;">{{ book.data.title }}</span>
+          <span class="item-metadata" style="margin-top: 5px;">By {{ book.data.author }}</span>
         </div>
       {% endif %}
     {% endfor %}
   </div>
 
-  {# 2. The Two-Column Grid #}
+  {# 2. The Two-Column Grid (Reusing your perfect Lab Grid) #}
   <div class="lab-grid">
     
-    {# LEFT COLUMN: Reviews (Read) #}
-    <div class="bookshelf-column">
-      <h2 style="font-family: 'Share Tech Mono', monospace; font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 5px; margin-bottom: 25px;">reviews</h2>
-      
+    {# LEFT COLUMN: Reviews #}
+    <div class="project-entry">
+      <h2 class="bookshelf-section-header">REVIEWS</h2>
       {% for book in collections.bookshelf %}
         {% if book.data.status == "read" %}
-          <div class="project-entry" style="margin-bottom: 30px;">
-            {# This is the blue link leading to the review #}
+          <div style="margin-bottom: 30px;">
             <a href="{{ book.url }}" class="project-title">{{ book.data.title }}</a>
-            <p style="font-family: 'Share Tech Mono', monospace; margin-top: -10px; font-size: 0.9rem; color: #000;">
-              {{ book.data.author }}
-            </p>
+            <span class="item-metadata">By {{ book.data.author }}</span>
           </div>
         {% endif %}
       {% endfor %}
     </div>
 
-    {# RIGHT COLUMN: Reading List (Want to read) #}
-    <div class="bookshelf-column">
-      <h2 style="font-family: 'Share Tech Mono', monospace; font-size: 1.1rem; border-bottom: 1px solid #000; padding-bottom: 5px; margin-bottom: 25px;">reading list</h2>
-      <ul class="lesson-list" style="list-style-type: '>';">
-        {% for book in collections.bookshelf %}
-          {% if book.data.status == "want-to-read" %}
-            <li style="margin-bottom: 15px; font-family: 'Share Tech Mono', monospace;">
-              <span style="font-weight: bold; display: block;">{{ book.data.title }}</span>
-              <span style="font-size: 0.85rem;">{{ book.data.author }}</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+    {# RIGHT COLUMN: Reading List #}
+    <div class="project-entry">
+      <h2 class="bookshelf-section-header">READING_LIST</h2>
+      {% for book in collections.bookshelf %}
+        {% if book.data.status == "want-to-read" %}
+          <div style="margin-bottom: 30px;">
+            {# Coherence: Same class as Lab titles, but black since it's not a link #}
+            <span class="project-title" style="color: #000; text-decoration: none; cursor: default;">
+              {{ book.data.title }}
+            </span>
+            <span class="item-metadata">By {{ book.data.author }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
     </div>
 
   </div>

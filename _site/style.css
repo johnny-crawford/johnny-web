@@ -2,7 +2,7 @@
 * { box-sizing: border-box; }
 
 body {
-    background-color: #C0C0C0; /* Retro Windows 95 Gray */
+    background-color: #C0C0C0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,6 +23,7 @@ body.is-home {
     flex-direction: column;
     width: 100%;
     padding: 20px;
+    /* 'stretch' is crucial: it allows child containers to use the full width we define */
     align-items: stretch; 
 }
 
@@ -96,13 +97,13 @@ body:not(.is-home) .desktop-wrapper {
     white-space: normal;
 }
 
-/* FORCED BLUE LINKS: Specifically targets links with the title class */
+/* Blue link logic for Lab, Reviews, and Notebook */
 a.project-title {
     color: #0000FF !important;
     text-decoration: underline !important;
 }
 
-/* FORCED BLACK TEXT: Targets non-link spans for Reading List consistency */
+/* Black text for non-link titles (like Reading List) */
 span.project-title {
     color: #000;
     text-decoration: none;
@@ -135,23 +136,24 @@ span.project-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 0.95rem; 
     color: #333;
-    margin-top: -12px;
-    margin-bottom: 20px;
+    margin-top: 4px;
     display: block;
 }
 
+/* THE CENTERING FIX: Parent container that centers the dotted box */
+.bookshelf-container, .centered-container {
+    text-align: center;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+/* The Dotted Box for Currently Reading */
 .currently-reading-box {
     border: 1px dashed #000;
     padding: 15px 25px;
     display: inline-block;
-    text-align: left;
+    text-align: left; /* Text inside the box is left-aligned */
     margin-top: 10px;
-}
-
-.centered-container {
-    text-align: center;
-    margin-bottom: 60px;
-    width: 100%;
 }
 
 /* Mobile fallback */

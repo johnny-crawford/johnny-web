@@ -4,14 +4,14 @@ title: Bookshelf
 ---
 <div class="page-content">
 
-  {# 1. Currently Reading Section #}
+  {# 1. Currently Reading Section: Centered via bookshelf-container #}
   <div class="bookshelf-container">
     <h2 class="bookshelf-header">[ currently reading ]</h2>
     <br>
     {% for book in collections.bookshelf %}
       {% if book.data.status == "currently-reading" %}
         <div class="currently-reading-box">
-          {# Title uses verified project-title class but without the blue link style #}
+          {# Title uses verified project-title class but black text #}
           <span class="project-title" style="color: #000; text-decoration: none; border: none; cursor: default;">
             {{ book.data.title }}
           </span>

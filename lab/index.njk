@@ -6,7 +6,7 @@ title: The Lab
 <div class="page-content">
   <div class="lab-grid"> {% for project in collections.lab %}
       <div class="project-entry">
-        <a href="{{ project.url }}" class="project-title">{{ project.data.title }}</a>
+        <a href="{{ github_url }}" class="project-title">{{ project.data.title }}</a>
         <ul class="lesson-list">
           {% for lesson in project.data.lessons %}
             <li>{{ lesson }}</li>
